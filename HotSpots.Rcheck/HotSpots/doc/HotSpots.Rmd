@@ -1,0 +1,90 @@
+---
+title: "HotSpots"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{HotSpots}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(HotSpots)
+set.seed(1414)
+```
+
+This package allows you to play the game HotSpots.  The goal is to get from the start spot (spot 1) to the finish spot (spot 25) by moving one spot horizontally or vertically at a time.
+Beware of hot spots which send you back to the start and make you lose a chance.  Your current spot will be yellow.  If you hit a hot spot, it will be red.  If you lose all three chances, the game is over.
+
+## new_game function
+
+Let's now look at the new_game function.
+
+We use this function to start a new game of Hot Spots.  This function begins a new game by setting the player's current spot to spot 1 (the starting spot).  It displays the board (as a plot) with the player at spot 1.  It selects a random number as the seed for the current game to use in the move_to function.  The seed allows for the selection of hot spots in the current game.  The function starts the player with three chances.  It returns a list with the current spot (1), number of chances (3), and seed. 
+
+```{r}
+new_game()
+```
+
+## move_to function
+
+Let's now look at the move_to function.
+
+This function is used to move to a spot on the board.
+The player must input the spot the player is currently at, the spot the player would like to move to, the number of chances the player has left, and the seed designated at the beginning of the game.
+Since the rules of the game only allow for a player to move one spot horizontally or vertically, if the player requests to move to a spot that is not one spot horizontally or vertically away from the current spot, a message will print reminding the player of that rule and what the current spot is.  They will also see where they currently are on the board.
+If the player requests to move to a spot that is allowed, the requested spot will become the current spot.  Then, the function will check if the spot is a hot spot.  
+If the spot is a hot spot, the player will lose a chance and be sent back to the starting spot (spot 1).
+If the spot is not a hot spot, the player will stay at the desired spot and can move again.
+If the spot is the finishing spot (spot 25), the player has won the game and can choose to start a new game using the new_game function.
+The function returns a list with the current spot, number of chances, and seed.
+
+To see how we use the move_to function, let's continue our game started above in the new_game function section.
+
+As with any new game, our current_spot is 1 and our chances left are 3.  For our particular game, we must use the seed 6361.  
+
+Since we can move one spot horizontally or vertically at a time, our choices for desired_spot are 2 and 6.  Let us choose spot 6 as our desired_spot.
+
+```{r}
+move_to(desired_spot=6, current_spot=1, chances=3, seed=6361)
+```
+
+We can see that spot 6 is a hot spot!  We are taken back to spot 1 as our current_spot and we have 2 chances left.  Our seed for this particular game remains 6361.
+
+Let us use the move_to function again to continue our game.  Since 6 is a hot spot, we will choose our desired_spot to be 2.
+
+```{r}
+move_to(desired_spot=2, current_spot=1, chances=2, seed=6361)
+```
+
+We can see that 2 is not a hot spot, so we can continue moving from there (2 is our current_spot) with our same number of chances (2).
+
+Since we can move one spot horizontally or vertically at a time, our choices for desired_spot are 1, 3, and 7.  Let us see what happens when we choose a spot that is not allowed as our desired_spot.  Let's choose spot 8.
+
+```{r}
+move_to(desired_spot=8, current_spot=2, chances=2, seed=6361)
+```
+
+We get a message reminding us of our current spot and that we can only move one spot horizontally or vertically.
+
+Let us now choose to move to an allowed spot, spot 3.
+
+```{r}
+move_to(desired_spot=3, current_spot=2, chances=2, seed=6361)
+```
+
+We can see that 3 is not a hot spot, so we can continue moving from there (3 is our current_spot) with our same number of chances (2).
+
+Since we can move one spot horizontally or vertically at a time, our choices for desired_spot are 2, 4, and 8.  Let us choose to move to spot 4.
+
+```{r}
+move_to(desired_spot=4, current_spot=3, chances=2, seed=6361)
+```
+
+We continue in this manner until we lose all our chances (hit 3 hot spots and it is game over) or reach spot 25 (win the game).

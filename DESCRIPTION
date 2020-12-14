@@ -1,0 +1,21 @@
+Package: HotSpots
+Title: Hot Spots Game
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "S",
+           family = "Ser",
+           role = c("aut", "cre"),
+           email = "sser@ufl.edu")
+Description: This package allows you to play the game HotSpots.  The goal is to
+  get from the start spot (spot 1) to the finish spot (spot 25) by moving one
+  spot horizontally or vertically at a time.  Beware of hot spots which send
+  you back to the start and make you lose a chance.
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

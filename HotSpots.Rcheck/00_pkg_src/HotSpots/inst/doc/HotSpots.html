@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<title>HotSpots</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#header {
+text-align: center;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">HotSpots</h1>
+
+
+
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">library</span>(HotSpots)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">set.seed</span>(<span class="dv">1414</span>)</span></code></pre></div>
+<p>This package allows you to play the game HotSpots. The goal is to get from the start spot (spot 1) to the finish spot (spot 25) by moving one spot horizontally or vertically at a time. Beware of hot spots which send you back to the start and make you lose a chance. Your current spot will be yellow. If you hit a hot spot, it will be red. If you lose all three chances, the game is over.</p>
+<div id="new_game-function" class="section level2">
+<h2>new_game function</h2>
+<p>Let’s now look at the new_game function.</p>
+<p>We use this function to start a new game of Hot Spots. This function begins a new game by setting the player’s current spot to spot 1 (the starting spot). It displays the board (as a plot) with the player at spot 1. It selects a random number as the seed for the current game to use in the move_to function. The seed allows for the selection of hot spots in the current game. The function starts the player with three chances. It returns a list with the current spot (1), number of chances (3), and seed.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">new_game</span>()</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<pre><code>#&gt; $current_spot
+#&gt; [1] 1
+#&gt; 
+#&gt; $chances
+#&gt; [1] 3
+#&gt; 
+#&gt; $seed
+#&gt; [1] 6361</code></pre>
+</div>
+<div id="move_to-function" class="section level2">
+<h2>move_to function</h2>
+<p>Let’s now look at the move_to function.</p>
+<p>This function is used to move to a spot on the board. The player must input the spot the player is currently at, the spot the player would like to move to, the number of chances the player has left, and the seed designated at the beginning of the game. Since the rules of the game only allow for a player to move one spot horizontally or vertically, if the player requests to move to a spot that is not one spot horizontally or vertically away from the current spot, a message will print reminding the player of that rule and what the current spot is. They will also see where they currently are on the board. If the player requests to move to a spot that is allowed, the requested spot will become the current spot. Then, the function will check if the spot is a hot spot.<br />
+If the spot is a hot spot, the player will lose a chance and be sent back to the starting spot (spot 1). If the spot is not a hot spot, the player will stay at the desired spot and can move again. If the spot is the finishing spot (spot 25), the player has won the game and can choose to start a new game using the new_game function. The function returns a list with the current spot, number of chances, and seed.</p>
+<p>To see how we use the move_to function, let’s continue our game started above in the new_game function section.</p>
+<p>As with any new game, our current_spot is 1 and our chances left are 3. For our particular game, we must use the seed 6361.</p>
+<p>Since we can move one spot horizontally or vertically at a time, our choices for desired_spot are 2 and 6. Let us choose spot 6 as our desired_spot.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">move_to</span>(<span class="dt">desired_spot=</span><span class="dv">6</span>, <span class="dt">current_spot=</span><span class="dv">1</span>, <span class="dt">chances=</span><span class="dv">3</span>, <span class="dt">seed=</span><span class="dv">6361</span>)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<pre><code>#&gt; [1] &quot;You stepped on a hot spot!&quot;
+#&gt; [1] &quot;You have 2 chance(s) left.&quot;
+#&gt; [1] &quot;You have to go back to the beginning.&quot;
+#&gt; $current_spot
+#&gt; [1] 1
+#&gt; 
+#&gt; $chances
+#&gt; [1] 2
+#&gt; 
+#&gt; $seed
+#&gt; [1] 6361</code></pre>
+<p>We can see that spot 6 is a hot spot! We are taken back to spot 1 as our current_spot and we have 2 chances left. Our seed for this particular game remains 6361.</p>
+<p>Let us use the move_to function again to continue our game. Since 6 is a hot spot, we will choose our desired_spot to be 2.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">move_to</span>(<span class="dt">desired_spot=</span><span class="dv">2</span>, <span class="dt">current_spot=</span><span class="dv">1</span>, <span class="dt">chances=</span><span class="dv">2</span>, <span class="dt">seed=</span><span class="dv">6361</span>)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<pre><code>#&gt; $current_spot
+#&gt; [1] 2
+#&gt; 
+#&gt; $chances
+#&gt; [1] 2
+#&gt; 
+#&gt; $seed
+#&gt; [1] 6361</code></pre>
+<p>We can see that 2 is not a hot spot, so we can continue moving from there (2 is our current_spot) with our same number of chances (2).</p>
+<p>Since we can move one spot horizontally or vertically at a time, our choices for desired_spot are 1, 3, and 7. Let us see what happens when we choose a spot that is not allowed as our desired_spot. Let’s choose spot 8.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">move_to</span>(<span class="dt">desired_spot=</span><span class="dv">8</span>, <span class="dt">current_spot=</span><span class="dv">2</span>, <span class="dt">chances=</span><span class="dv">2</span>, <span class="dt">seed=</span><span class="dv">6361</span>)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<pre><code>#&gt; [1] &quot;You are currently at spot 2.&quot;
+#&gt; [1] &quot;You can only move one spot horizontally or vertically.  Please try again.&quot;
+#&gt; $current_spot
+#&gt; [1] 2
+#&gt; 
+#&gt; $chances
+#&gt; [1] 2
+#&gt; 
+#&gt; $seed
+#&gt; [1] 6361</code></pre>
+<p>We get a message reminding us of our current spot and that we can only move one spot horizontally or vertically.</p>
+<p>Let us now choose to move to an allowed spot, spot 3.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">move_to</span>(<span class="dt">desired_spot=</span><span class="dv">3</span>, <span class="dt">current_spot=</span><span class="dv">2</span>, <span class="dt">chances=</span><span class="dv">2</span>, <span class="dt">seed=</span><span class="dv">6361</span>)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<pre><code>#&gt; $current_spot
+#&gt; [1] 3
+#&gt; 
+#&gt; $chances
+#&gt; [1] 2
+#&gt; 
+#&gt; $seed
+#&gt; [1] 6361</code></pre>
+<p>We can see that 3 is not a hot spot, so we can continue moving from there (3 is our current_spot) with our same number of chances (2).</p>
+<p>Since we can move one spot horizontally or vertically at a time, our choices for desired_spot are 2, 4, and 8. Let us choose to move to spot 4.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw">move_to</span>(<span class="dt">desired_spot=</span><span class="dv">4</span>, <span class="dt">current_spot=</span><span class="dv">3</span>, <span class="dt">chances=</span><span class="dv">2</span>, <span class="dt">seed=</span><span class="dv">6361</span>)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<pre><code>#&gt; $current_spot
+#&gt; [1] 4
+#&gt; 
+#&gt; $chances
+#&gt; [1] 2
+#&gt; 
+#&gt; $seed
+#&gt; [1] 6361</code></pre>
+<p>We continue in this manner until we lose all our chances (hit 3 hot spots and it is game over) or reach spot 25 (win the game).</p>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
